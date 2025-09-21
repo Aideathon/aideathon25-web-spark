@@ -1,6 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
+import { motion } from "framer-motion";
+
 const problemStatements = [
   { id: 1, title: "AI-Powered Healthcare Assistant", category: "Software", psNo: "PS001", theme: "Healthcare" },
   { id: 2, title: "Smart Campus Management System", category: "Software", psNo: "PS002", theme: "Education" },

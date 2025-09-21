@@ -13,15 +13,17 @@ import { PrizesRules } from "@/pages/PrizesRules";
 import { Patrons } from "@/pages/Patrons";
 import { Contact } from "@/pages/Contact";
 import NotFound from "./pages/NotFound";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
+    <ThemeProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
         <div className="min-h-screen flex flex-col">
           <Navbar />
           <main className="flex-1">
@@ -39,8 +41,9 @@ const App = () => (
           </main>
           <Footer />
         </div>
-      </BrowserRouter>
-    </TooltipProvider>
+        </BrowserRouter>
+      </TooltipProvider>
+    </ThemeProvider>
   </QueryClientProvider>
 );
 
