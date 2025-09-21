@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ExternalLink, QrCode, Users, Calendar, MapPin } from "lucide-react";
+import { QRCode } from "qrcode.react";
 
 export const Registration = () => {
   const [isRedirecting, setIsRedirecting] = useState(false);
@@ -22,16 +23,17 @@ export const Registration = () => {
   ];
 
   return (
-    <div className="min-h-screen py-20">
-      <div className="container max-w-4xl">
+    <div className="min-h-screen py-20 bg-background text-foreground transition-colors duration-500">
+      <div className="container max-w-4xl px-4 mx-auto">
+
         {/* Header */}
-        <motion.div 
+        <motion.div
           className="text-center space-y-6 mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <motion.h1 
+          <motion.h1
             className="text-4xl md:text-6xl font-bold"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -39,7 +41,7 @@ export const Registration = () => {
           >
             <span className="text-gradient">Registration</span>
           </motion.h1>
-          <motion.p 
+          <motion.p
             className="text-xl text-muted-foreground max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -50,7 +52,7 @@ export const Registration = () => {
         </motion.div>
 
         {/* Event Info Cards */}
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -76,7 +78,7 @@ export const Registration = () => {
         </motion.div>
 
         {/* Registration Options */}
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -97,17 +99,20 @@ export const Registration = () => {
                 </CardTitle>
               </CardHeader>
               <CardContent className="text-center">
-                <motion.div 
+                <motion.div
                   className="bg-white p-8 rounded-lg inline-block mb-4"
                   initial={{ scale: 0.8, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ duration: 0.6, delay: 1.5 }}
                   whileHover={{ scale: 1.05 }}
                 >
-                  <img 
-                    src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://forms.gle/aVkrsvWvXDfLtLRU7"
-                    alt="Registration QR Code"
-                    className="w-48 h-48"
+                  <QRCode
+                    value="https://forms.gle/aVkrsvWvXDfLtLRU7"
+                    size={200}
+                    bgColor="#ffffff"
+                    fgColor="#000000"
+                    level="H"
+                    includeMargin={true}
                   />
                 </motion.div>
                 <p className="text-sm text-muted-foreground">
@@ -133,12 +138,9 @@ export const Registration = () => {
               </CardHeader>
               <CardContent className="text-center space-y-6">
                 <div className="py-16">
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Button 
-                      size="lg" 
+                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+                    <Button
+                      size="lg"
                       className="glow-primary text-lg px-8 py-6"
                       onClick={handleRegistration}
                       disabled={isRedirecting}
@@ -152,7 +154,7 @@ export const Registration = () => {
                   Click to open the Google Form in a new tab
                 </p>
                 {isRedirecting && (
-                  <motion.p 
+                  <motion.p
                     className="text-sm text-primary animate-pulse"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -177,7 +179,7 @@ export const Registration = () => {
               <CardTitle className="text-2xl text-accent">Registration Information</CardTitle>
             </CardHeader>
             <CardContent className="space-y-6">
-              <motion.div 
+              <motion.div
                 className="grid grid-cols-1 md:grid-cols-2 gap-8"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
@@ -215,8 +217,8 @@ export const Registration = () => {
                   </ul>
                 </motion.div>
               </motion.div>
-              
-              <motion.div 
+
+              <motion.div
                 className="pt-6 border-t border-border/50"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
